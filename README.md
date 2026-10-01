@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Xyrus Dimacali portfolio
 
-## Getting Started
+My personal portfolio, built with Next.js, TypeScript, Tailwind CSS and Lenis.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm test         # unit tests
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Stop `npm run dev` before running `npm run build`; both write to `.next/`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Edit content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Everything on the page lives in `src/data/portfolio.ts`: projects, bio, skills, process steps, stats, tech stack and certifications. Edit that file and the page updates. No component changes needed.
 
-## Learn More
+To add a project screenshot, put the image in `public/images/projects/` and set `image: "/images/projects/<slug>.png"` on that project. Without an image, the project shows a matcha cover with its name and a small line drawing.
 
-To learn more about Next.js, take a look at the following resources:
+## Photos and files
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Hero portrait: `public/images/portrait.png`, a transparent PNG. 1024px square works; larger (about 1600px) looks sharper on high-resolution screens.
+- About photo: `public/images/about.png`, a transparent PNG cropped above the waist. If you change its size, update `width` and `height` in `src/components/sections/About.tsx`.
+- Résumé: `public/resume/Dimacali_Xyrus_Resume.pdf`. The "Résumé" and "Download résumé" links point here.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy to Vercel
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repo to GitHub.
+2. In Vercel, choose **Add New → Project** and import the repo. No settings needed.
+3. Optional: set `NEXT_PUBLIC_SITE_URL` to your custom domain (for example `https://xyrusdimacali.dev`) so social previews use it. Without it, Vercel's production URL is used.
