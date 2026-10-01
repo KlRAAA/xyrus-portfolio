@@ -32,7 +32,7 @@ export const site = {
   location: "Based in the Philippines, open to roles in Metro Manila",
   availability: "Available for internships",
   email: "xyrusdimacali@gmail.com",
-  resume: "/resume/Dimacali_Xyrus_Resume.pdf",
+  resume: "/resume/Dimacali_Xyrus_Lorenz_Dev_Resume.pdf",
   github: "https://github.com/KlRAAA",
   linkedin: "https://linkedin.com/in/xyrus-dimacali-73a752328",
 };

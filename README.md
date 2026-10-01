@@ -1,6 +1,6 @@
-# Xyrus Dimacali portfolio
+# xyrus-portfolio
 
-My personal portfolio, built with Next.js, TypeScript, Tailwind CSS and Lenis.
+Personal portfolio of Xyrus Dimacali, a CS student and full-stack developer who ships code and tests it too. Built with Next.js, TypeScript and Tailwind CSS. Scores 90+ on all four mobile Lighthouse categories.
 
 ## Run it
 
@@ -23,7 +23,7 @@ To add a project screenshot, put the image in `public/images/projects/` and set 
 
 - Hero portrait: `public/images/portrait.png`, a transparent PNG. 1024px square works; larger (about 1600px) looks sharper on high-resolution screens.
 - About photo: `public/images/about.png`, a transparent PNG cropped above the waist. If you change its size, update `width` and `height` in `src/components/sections/About.tsx`.
-- Résumé: `public/resume/Dimacali_Xyrus_Resume.pdf`. The "Résumé" and "Download résumé" links point here.
+- Résumé: `public/resume/Dimacali_Xyrus_Lorenz_Dev_Resume.pdf`. The "Résumé" and "Download résumé" links point here.
 
 ## Deploy to Vercel
 

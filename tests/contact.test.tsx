@@ -7,7 +7,7 @@ it("offers email and résumé", () => {
   expect(screen.getByRole("link", { name: /email me/i })).toHaveAttribute("href", "mailto:xyrusdimacali@gmail.com");
   expect(screen.getByRole("link", { name: /download résumé/i })).toHaveAttribute(
     "href",
-    "/resume/Dimacali_Xyrus_Resume.pdf",
+    "/resume/Dimacali_Xyrus_Lorenz_Dev_Resume.pdf",
   );
 });
 it("never links a phone number", () => {

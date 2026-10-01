@@ -14,5 +14,5 @@ it("opens and closes the mobile menu", async () => {
 });
 it("links to the résumé", () => {
   render(<Nav />);
-  expect(screen.getAllByRole("link", { name: /résumé/i })[0]).toHaveAttribute("href", "/resume/Dimacali_Xyrus_Resume.pdf");
+  expect(screen.getAllByRole("link", { name: /résumé/i })[0]).toHaveAttribute("href", "/resume/Dimacali_Xyrus_Lorenz_Dev_Resume.pdf");
 });
