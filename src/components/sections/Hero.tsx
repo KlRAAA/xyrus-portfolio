@@ -13,7 +13,7 @@ export function Hero() {
       <h1 className="pointer-events-none absolute inset-x-0 top-[19svh] text-center md:top-[16svh] lg:top-[11svh]">
         <span
           aria-hidden
-          className="intro-rise block bg-gradient-to-b from-matcha-light via-matcha to-matcha-deep bg-clip-text text-[min(30vw,34rem)] leading-[0.8] font-extrabold tracking-[-0.045em] text-transparent wdth-75 [mask-image:linear-gradient(to_bottom,black_35%,transparent_95%)]"
+          className="intro-rise block bg-gradient-to-b from-matcha-light/85 via-matcha/75 to-matcha-deep/60 bg-clip-text text-[min(30vw,34rem)] leading-[0.8] font-extrabold tracking-[-0.045em] text-transparent wdth-75 [mask-image:linear-gradient(to_bottom,black_20%,transparent_100%)] lg:text-[min(34vw,40rem)]"
         >
           {site.displayName}
         </span>
@@ -32,7 +32,7 @@ export function Hero() {
             fill
             priority
             sizes="(max-width: 768px) 118vw, (max-width: 1024px) 780px, 1180px"
-            className="object-contain object-bottom"
+            className="object-contain object-bottom drop-shadow-[0_28px_56px_rgb(0_0_0/0.6)]"
           />
         </div>
       </div>
