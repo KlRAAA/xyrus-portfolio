@@ -75,6 +75,7 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Neon Postgres", "Drizzle ORM", "Vercel"],
     links: [{ label: "Live", href: "https://kodigo-ai-study-buddy.vercel.app/" }],
+    image: "/images/projects/kodigo.png",
   },
   {
     slug: "skillscope",
@@ -88,6 +89,7 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "pandas", "scikit-learn", "XGBoost", "SHAP", "Streamlit", "GitHub Actions"],
     links: [{ label: "Live", href: "https://skillscope-tech-job-market-analyzer.streamlit.app/" }],
+    image: "/images/projects/skillscope.png",
   },
   {
     slug: "webtracker",
@@ -101,6 +103,7 @@ export const projects: Project[] = [
     ],
     stack: ["JavaScript", "Chrome Extension (MV3)", "Chrome Storage API", "Node.js"],
     links: [{ label: "Code", href: "https://github.com/KlRAAA/WebTracker" }],
+    image: "/images/projects/webtracker.png",
   },
 ];
 
