@@ -1,4 +1,4 @@
-import { siGithub } from "simple-icons";
+import { siFacebook, siGithub, siInstagram } from "simple-icons";
 
 type P = { className?: string };
 const stroke = {
@@ -28,6 +28,16 @@ export const MailIcon = ({ className }: P) => (
 export const GitHubIcon = ({ className }: P) => (
   <svg viewBox="0 0 24 24" aria-hidden className={className} fill="currentColor">
     <path d={siGithub.path} />
+  </svg>
+);
+export const InstagramIcon = ({ className }: P) => (
+  <svg viewBox="0 0 24 24" aria-hidden className={className} fill="currentColor">
+    <path d={siInstagram.path} />
+  </svg>
+);
+export const FacebookIcon = ({ className }: P) => (
+  <svg viewBox="0 0 24 24" aria-hidden className={className} fill="currentColor">
+    <path d={siFacebook.path} />
   </svg>
 );
 // LinkedIn is not in Simple Icons; simple "in" mark.

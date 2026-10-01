@@ -1,11 +1,13 @@
 import { site } from "@/data/portfolio";
 import { Button } from "@/components/ui/Button";
-import { GitHubIcon, LinkedInIcon } from "@/components/ui/Icons";
+import { FacebookIcon, GitHubIcon, InstagramIcon, LinkedInIcon } from "@/components/ui/Icons";
 
 export function SocialLinks() {
   const links = [
     { href: site.github, label: "GitHub", Icon: GitHubIcon },
     { href: site.linkedin, label: "LinkedIn", Icon: LinkedInIcon },
+    { href: site.instagram, label: "Instagram", Icon: InstagramIcon },
+    { href: site.facebook, label: "Facebook", Icon: FacebookIcon },
   ];
   return (
     <ul className="flex gap-3">

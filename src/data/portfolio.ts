@@ -35,6 +35,8 @@ export const site = {
   resume: "/resume/Dimacali_Xyrus_Lorenz_Dev_Resume.pdf",
   github: "https://github.com/KlRAAA",
   linkedin: "https://linkedin.com/in/xyrus-dimacali-73a752328",
+  instagram: "https://www.instagram.com/_xyrusdmcl",
+  facebook: "https://www.facebook.com/share/1CXviKnSq4/",
 };
 
 export const navSections = [

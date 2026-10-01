@@ -19,6 +19,13 @@ it("never links a phone number", () => {
   );
   expect(container.querySelector('a[href^="tel:"]')).toBeNull();
 });
+it("links every social profile from the footer", () => {
+  render(<Footer />);
+  expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", "https://github.com/KlRAAA");
+  expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", "https://linkedin.com/in/xyrus-dimacali-73a752328");
+  expect(screen.getByRole("link", { name: "Instagram" })).toHaveAttribute("href", "https://www.instagram.com/_xyrusdmcl");
+  expect(screen.getByRole("link", { name: "Facebook" })).toHaveAttribute("href", "https://www.facebook.com/share/1CXviKnSq4/");
+});
 it("credits Xyrus in the footer", () => {
   render(<Footer />);
   expect(screen.getByText(/© 2026 Xyrus Lorenz Dimacali/)).toBeInTheDocument();
