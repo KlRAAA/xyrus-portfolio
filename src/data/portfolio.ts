@@ -62,6 +62,7 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Python", "Jest", "Postman", "Figma"],
     links: [{ label: "Code", href: "https://github.com/KlRAAA/rideshare-eu" }],
+    image: "/images/projects/rideshare-eu.png",
     featured: true,
   },
   {
