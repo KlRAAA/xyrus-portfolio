@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  --color-ink: #0f120d;
+  --color-moss: #171c14;
+  --color-matcha-deep: #3f5a2e;
+  --color-matcha: #7fa35a;
+  --color-matcha-light: #b9cf8f;
+  --color-cream: #f2efe3;
+  --color-sage: #9aa391;
+  --color-matcha-milk: #e3e9d2;
+
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility page-x {
+  margin-inline: auto;
+  max-width: 90rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 4rem;
+  }
+}
+@utility wdth-75 {
+  font-variation-settings: "wdth" 75;
+}
+@utility wdth-85 {
+  font-variation-settings: "wdth" 85;
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    color-scheme: dark;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-matcha);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-matcha);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18%); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes unblur {
+  from { opacity: 0; filter: blur(16px); transform: translateY(24px) scale(1.02); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse-ring {
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+
+/* Hero load sequence. Plays once per session; the head script and IntroSkipper set data-intro="skip". */
+.intro-rise { animation: rise 800ms var(--ease-soft) both; }
+.intro-portrait { animation: unblur 900ms var(--ease-soft) 150ms both; }
+.intro-line { animation: rise 700ms var(--ease-soft) both; animation-delay: calc(450ms + var(--i, 0) * 90ms); }
+.intro-fade { animation: fade-in 500ms var(--ease-soft) 700ms both; }
+
+:root[data-intro="skip"] :is(.intro-rise, .intro-portrait, .intro-line, .intro-fade) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.intro-rise, .intro-portrait, .intro-line, .intro-fade) {
+    animation: fade-in 300ms ease-out both;
+  }
+}
