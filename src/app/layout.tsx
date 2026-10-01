@@ -7,11 +7,12 @@ import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  axes: ["opsz", "wdth"],
+  axes: ["wdth"],
   variable: "--font-bricolage",
   display: "swap",
 });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
+// Mono only appears below the fold, so it shouldn't compete with the hero for bandwidth.
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap", preload: false });
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??

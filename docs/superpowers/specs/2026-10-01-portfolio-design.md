@@ -54,8 +54,10 @@ Sticky nav: `xd.` left; section links and a Resume button right; collapses to a 
 
 ## Motion
 
-- `motion` for components, Lenis for smooth scroll. GSAP not needed.
-- **Signature moment (≈1.1s, once per session via `sessionStorage`):** name rises line by line, portrait blur → sharp, then nav and pill fade in. Any key, click or scroll completes it instantly. Never blocks content.
+- Lenis for smooth scroll (loaded when the browser is idle). GSAP not needed.
+- `motion` was dropped during the performance pass: it was a ~58KB gzipped chunk serving three effects (progress bar, process reveal, count-up), each now a few lines of CSS transitions, `IntersectionObserver` and `requestAnimationFrame`. This took mobile Lighthouse Performance from 75 to ~90.
+- The portrait's load-in is transform-only (no blur, no opacity) and its cast shadow is a radial gradient rather than `filter: drop-shadow`: the portrait is the LCP element, and filters on it delayed first paint by up to 2s in Lighthouse.
+- **Signature moment (≈1.1s, once per session via `sessionStorage`):** name rises, portrait settles into place, tagline rises line by line, then nav and pill fade in. Any key, click or scroll completes it instantly. Never blocks content.
 - Other motion only where it explains something: stat count-up, process line drawing, top scroll-progress bar, scroll-spy.
 - No custom cursor, magnetic buttons, card tilt or cursor spotlights. No fade-up on every section.
 - Hover (and identical keyboard focus): button gradient sweep, ↗ nudge, 2px lift with soft glow; project image scale 1.05 with matcha edge glow; nav underline drawn from left; icons turn matcha. 200–300ms ease-out in, faster out.

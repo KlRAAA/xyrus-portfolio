@@ -1,37 +1,51 @@
 "use client";
-import { animate, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { formatNumber } from "@/lib/format";
+import { prefersReducedMotion } from "@/lib/use-in-view-once";
+
+const DURATION = 1400;
+const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - 2 ** (-10 * t));
 
 export function CountUp({ value, decimals = 0 }: { value: number; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const reduce = useReducedMotion();
-  const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
   const [display, setDisplay] = useState(value);
-  const armed = useRef(false);
-
-  // Only animate numbers that start below the fold; ones already visible stay put.
-  useEffect(() => {
-    if (reduce) return;
-    const rect = ref.current?.getBoundingClientRect();
-    if (rect && rect.top > window.innerHeight) {
-      armed.current = true;
-      setDisplay(0);
-    }
-  }, [reduce]);
 
   useEffect(() => {
-    if (!inView || !armed.current) return;
-    const controls = animate(0, value, {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: setDisplay,
-      onComplete: () => {
-        armed.current = false;
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+    let frame = 0;
+    let armed = false;
+    const run = () => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min((now - start) / DURATION, 1);
+        setDisplay(value * easeOutExpo(t));
+        if (t < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    };
+    // The observer's first report says where the number starts: only ones below the fold count up.
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (!armed) {
+          if (entry.isIntersecting || entry.boundingClientRect.top < 0) return obs.disconnect();
+          armed = true;
+          setDisplay(0);
+          return;
+        }
+        if (entry.isIntersecting) {
+          obs.disconnect();
+          run();
+        }
       },
-    });
-    return () => controls.stop();
-  }, [inView, value]);
+      { rootMargin: "0px 0px -15% 0px" },
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [value]);
 
   return (
     <span ref={ref}>

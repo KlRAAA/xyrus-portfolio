@@ -25,14 +25,20 @@ export function Hero() {
       {/* Phones: lifted so the head overlaps the name and the tagline sits below the face.
           Desktop: scaled up with the shoulders running off the bottom edge for a closer crop. */}
       <div className="pointer-events-none absolute bottom-[21svh] left-1/2 w-[118vw] -translate-x-1/2 md:bottom-0 md:w-[min(100vw,80svh,780px)] lg:-bottom-[18svh] lg:w-[min(118vw,108svh,1180px)]">
+        {/* Soft shadow cast onto the name. A gradient, not a filter: filters on a large image delay first paint. */}
+        <div
+          aria-hidden
+          className="absolute inset-x-[14%] top-[4%] bottom-[18%] translate-y-[5%] bg-[radial-gradient(closest-side,rgb(0_0_0/0.55),transparent)]"
+        />
         <div className="intro-portrait relative aspect-square [mask-image:linear-gradient(to_bottom,black_72%,transparent)] md:[mask-image:none]">
           <Image
             src="/images/portrait.png"
             alt="Portrait of Xyrus Dimacali"
             fill
-            priority
+            preload
+            fetchPriority="high"
             sizes="(max-width: 768px) 118vw, (max-width: 1024px) 780px, 1180px"
-            className="object-contain object-bottom drop-shadow-[0_28px_56px_rgb(0_0_0/0.6)]"
+            className="object-contain object-bottom"
           />
         </div>
       </div>

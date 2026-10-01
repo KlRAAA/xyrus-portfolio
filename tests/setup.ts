@@ -3,7 +3,7 @@ import { vi } from "vitest";
 import { createElement } from "react";
 
 // Render next/image as a plain <img>, dropping Next-only props.
-const nextOnly = new Set(["fill", "priority", "sizes"]);
+const nextOnly = new Set(["fill", "preload", "sizes"]);
 vi.mock("next/image", () => ({
   default: (props: Record<string, unknown>) =>
     createElement("img", Object.fromEntries(Object.entries(props).filter(([k]) => !nextOnly.has(k)))),
